@@ -9,7 +9,8 @@ import { Student } from '../models/student';
 })
 export class TestServiceService {
 
-  private url = 'https://9479-181-231-122-56.ngrok-free.app/student';
+  //            https://3465-181-231-122-56.ngrok-free.app/student ////2/11/23
+  private url = 'https://3465-181-231-122-56.ngrok-free.app/student/getAll';
 
   constructor(private http: HttpClient) { } //agregamos el cliente http dentro del constructor
 
