@@ -32,14 +32,14 @@
 </table>
 
 <form [formGroup]="studentForm">
-        <input name="" id="" />
-        <input formControlName="dni" />
+        <input readonly name="" id="" />
+        <input placeholder="Dni" formControlName="dni" />
         <p *ngIf="dni?.touched && dni?.errors?.required">Campo obligatorio</p>
-        <input formControlName="lastName" />
+        <input placeholder="Apellido" formControlName="lastName" />
         <p *ngIf="lastName?.touched && lastName?.errors?.required">Campo obligatorio</p>
-        <input formControlName="firstName" />
+        <input placeholder="Nombre" formControlName="firstName" />
         <p *ngIf="firstName?.touched && firstName?.errors?.required">Campo obligatorio</p>
-        <input formControlName="email" />
+        <input placeholder="Correo" formControlName="email" />
         <p *ngIf="email?.touched && email?.errors?.required">Campo obligatorio</p>
         <button (click)="saveStudent()">Guardar alumno</button>
         <button>Boton1</button>

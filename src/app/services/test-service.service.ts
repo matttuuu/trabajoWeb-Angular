@@ -9,13 +9,13 @@ import { Student } from '../models/student';
 })
 export class TestServiceService {
 
-  //             https://cb95-181-231-122-56.ngrok-free.app/student ////2/11/23
-  private url = 'https://cb95-181-231-122-56.ngrok-free.app/student/getAll';
+  //             https://backend-idra-production.up.railway.app/student/getAll ////2/11/23
+  private url = 'https://backend-idra-production.up.railway.app/student';
 
   constructor(private http: HttpClient) { } //agregamos el cliente http dentro del constructor
 
   getAll(): Observable <any> { //Agregamos el tipo de dato que devuelve la funcion (un observable, que es una promesa)
-    return this.http.get(this.url)
+    return this.http.get(this.url + "/getAll") // /getAll
   }
 
   add(s: Student): Observable <any>{ //pasar objeto

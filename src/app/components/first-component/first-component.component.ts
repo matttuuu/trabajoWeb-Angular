@@ -85,10 +85,10 @@ export class FirstComponentComponent implements OnInit  { //OnInit es una interf
     this.student.address = 'abc123'
     this.student.phone = '223000'
 
-    this.studentService.add(new Student).subscribe(() => { // deberia usar el new?
+    this.studentService.add(this.student).subscribe(() => { // Resolver
       location.reload()
       }, error => {
-
+        console.error(error);
         alert('Error: ' + error.error.message)
         document.getElementsByTagName('input')[0].focus()
     })
