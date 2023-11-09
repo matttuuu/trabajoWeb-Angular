@@ -1,65 +1,67 @@
-<div style="background-color: blueviolet; font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-seri;">
-    <h1>Titulo de TestComponent</h1>
+<div
+  style="
+    background-color: blueviolet;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+      sans-serif; "
+>
+  <h1>Titulo de TestComponent</h1>
 </div>
 
 <table>
-    <thead>
-        <tr>
-            <td>ID</td>
-            <td>DNI</td>
-            <td>LASTNAME</td>
-            <td>FIRSTNAME</td>
-            <td>EMAIL</td>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Dni</th>
+      <th>Apellido</th>
+      <th>Nombre</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+        <tr *ngFor="let student of studentsList">
+            <!--a ver si dentro del tr...-->
+            <td>{{ student.id }}</td>
+            <td>{{ student.dni }}</td>
+            <td>{{ student.lastName }}</td>
+            <td>{{ student.firstName }}</td>
+            <td>{{ student.email }}</td>
         </tr>
-    </thead>
-    
-    <tbody>
-        <tr *ngFor="let student of studentsList"> <!--a ver si dentro del tr...-->
-            <td>{{student.id}}</td>
-            <td>{{student.dni}}</td>
-            <td>{{student.lastName}}</td>
-            <td>{{student.firstName}}</td>
-            <td>{{student.email}}</td>
-        </tr>
-    </tbody>
-    
-    <tfoot style="background-color: gainsboro">
-        <form [formGroup] = "studentForm"></form>
-        <tr> 
-            <td><input name="" id=""></td>
-            <td><input formControlName="dni"><p> *ngIf="dni.errors.required" Campo obligatorio</p></td>
-            <td><input formControlName="lastName"><p> *ngIf="lastName.errors.required" Campo obligatorio</p></td>
-            <td><input formControlName="firstName"><p> *ngIf="firstName.errors.required" Campo obligatorio</p></td>
-            <td><input formControlName="email"><p> *ngIf="email.errors.required" Campo obligatorio</p></td>      
-            <button (click)="saveStudent()">Guardar alumno</button>
-            <td><button>Boton1</button></td>
-        </tr>
-            
-    </tfoot>
-
-    <ng-template #ver let-modal>
-        <div class="modal-header"></div>
-        
-        <div class="modal-body">
-            <label>ID2</label>
-            <input class="form-control" [(ngModel)] = "id2" readonly>
-            <label for="">DNI</label>
-            <input class = "form-control" [(ngModel)] = "dni2" ngbautofocus>
-            <label>Nombre</label>
-            <input class = "form-control" [(ngModel)] = "nombre2">
-            <label>Apellido</label>
-            <input class = "form-control" [(ngModel)] = "apellido2">
-            <label>Email</label>
-            <input class = "form-control" [(ngModel)] = "email2">
-        </div>
-
-        <div class="modal-footer">
-            <button class="btn btn-primary" (click)="modal.close()">Guardar</button>
-        </div>
-    </ng-template>
-    
-        
-    
-
-
+  </tbody>
 </table>
+
+<form [formGroup]="studentForm">
+        <input name="" id="" />
+        <input formControlName="dni" />
+        <p *ngIf="dni?.touched && dni?.errors?.required">Campo obligatorio</p>
+        <input formControlName="lastName" />
+        <p *ngIf="lastName?.touched && lastName?.errors?.required">Campo obligatorio</p>
+        <input formControlName="firstName" />
+        <p *ngIf="firstName?.touched && firstName?.errors?.required">Campo obligatorio</p>
+        <input formControlName="email" />
+        <p *ngIf="email?.touched && email?.errors?.required">Campo obligatorio</p>
+        <button (click)="saveStudent()">Guardar alumno</button>
+        <button>Boton1</button>
+</form>
+
+<ng-template #ver let-modal>
+  <div class="modal-header"></div>
+
+  <div class="modal-body">
+    <label>ID2</label>
+    <input class="form-control" [(ngModel)]="id2" readonly />
+    <label for="">DNI</label>
+    <input class="form-control" [(ngModel)]="dni2" ngbautofocus />
+    <label>Nombre</label>
+    <input class="form-control" [(ngModel)]="nombre2" />
+    <label>Apellido</label>
+    <input class="form-control" [(ngModel)]="apellido2" />
+    <label>Email</label>
+    <input class="form-control" [(ngModel)]="email2" />
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-primary" (click)="modal.close()">Guardar</button>
+  </div>
+</ng-template>

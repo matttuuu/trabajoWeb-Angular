@@ -14,14 +14,14 @@ import { FormGroup,FormControl,Validators } from '@angular/forms'; //Importamos 
 })
 
 export class FirstComponentComponent implements OnInit  { //OnInit es una interfaz que te permite cargar cosas cuando el componente se carga
-  student: Student
+  student = new Student();
   studentForm:FormGroup;
   
   studentsList = new Array <Student>
+  
 
-
- // @Input() dni : string = "44670850" //variables de tipo string, para realizar la validacion en el tfoot
- // nombre : string 
+  //@Input() dni : string = "44670850" //variables de tipo string, para realizar la validacion en el tfoot
+  //nombre : string 
   //apellido : string
   //email : string
 
@@ -35,7 +35,6 @@ export class FirstComponentComponent implements OnInit  { //OnInit es una interf
 
 
 
-
   ngOnInit() { 
     this.studentForm= new FormGroup({ 
       "dni": new FormControl(this.student.dni,Validators.required),
@@ -46,12 +45,14 @@ export class FirstComponentComponent implements OnInit  { //OnInit es una interf
     this.getAll()
   }
 
+
   //getter, para recuperar las variables
   get dni() {return this.studentForm.get("dni") } //Copiar estos getter para cada variable requerida
   get lastName() {return this.studentForm.get("lastName")}
   get firstName() {return this.studentForm.get("firstName")}
   get email() {return this.studentForm.get("email")}
   
+
 
   getAll(){
     this.studentService.getAll().subscribe(response => {
@@ -74,7 +75,6 @@ export class FirstComponentComponent implements OnInit  { //OnInit es una interf
 */
   saveStudent(){
 
-    
     this.student.dni = this.dni?.value //sintaxis
     this.student.lastName = this.lastName?.value
     this.student.firstName = this.firstName?.value
@@ -84,11 +84,11 @@ export class FirstComponentComponent implements OnInit  { //OnInit es una interf
     this.student.gender = 'masculino'
     this.student.address = 'abc123'
     this.student.phone = '223000'
-    
+
     this.studentService.add(new Student).subscribe(() => { // deberia usar el new?
       location.reload()
       }, error => {
-        
+
         alert('Error: ' + error.error.message)
         document.getElementsByTagName('input')[0].focus()
     })
