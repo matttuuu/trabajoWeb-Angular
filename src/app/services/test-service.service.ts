@@ -26,8 +26,8 @@ export class TestServiceService {
     return this.http.post(this.url + '/' + s.id + '/update',s)
   }
 
-  delete(s: Student): Observable <any>{
-    return this.http.post(this.url + '/' + s.id + '/update',null)
+  delete(id: number): Observable <any>{
+    return this.http.post(this.url + '/' + id + '/update',null)
     
   }
 

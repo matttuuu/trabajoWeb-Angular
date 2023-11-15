@@ -85,13 +85,27 @@ export class FirstComponentComponent implements OnInit  { //OnInit es una interf
     this.student.address = 'abc123'
     this.student.phone = '223000'
 
-    this.studentService.add(this.student).subscribe(() => { // Resolver
+    this.studentService.add(this.student).subscribe(() => { 
       location.reload()
       }, error => {
         console.error(error);
         alert('Error: ' + error.error.message)
         document.getElementsByTagName('input')[0].focus()
     })
+
+  }
+
+  delete(id: number) {
+    this.studentService.delete(id).subscribe(() => { //id - resolver
+      location.reload()
+    },error => {
+      console.error(error)
+      alert("Error: " + error.error.message)
+    })
+  }
+
+  view(ver: any, s:Student){ //Hacemos uso del ngbModal (revisar constructor)
+    
 
   }
 
