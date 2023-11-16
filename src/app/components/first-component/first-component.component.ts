@@ -3,7 +3,7 @@ import { TestServiceService } from 'src/app/services/test-service.service';
 import {Student } from 'src/app/models/student';
 import { FormsModule  } from '@angular/forms';
 import { FormGroup,FormControl,Validators } from '@angular/forms'; //Importamos los validators
-//import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -25,13 +25,18 @@ export class FirstComponentComponent implements OnInit  { //OnInit es una interf
   //apellido : string
   //email : string
 
-  id2 : string
-  dni2 : string
-  nombre2 : string
-  apellido2 : string
-  email2 : string
+  @Input() id2 : number
+  @Input() dni2 : string
+  @Input() nombre2 : string
+  @Input() apellido2 : string
+  @Input() email2 : string
 
-  constructor(private studentService: TestServiceService){} //Creamos el constructor de la clase
+  dni3: string
+  apellido3: string
+  nombre3: string
+  email3: string
+
+  constructor(private studentService: TestServiceService, private modalService: NgbModal){} //Creamos el constructor de la clase
 
 
 
@@ -105,8 +110,41 @@ export class FirstComponentComponent implements OnInit  { //OnInit es una interf
   }
 
   view(ver: any, s:Student){ //Hacemos uso del ngbModal (revisar constructor)
-    
+    this.id2 = s.id;
+    this.dni2 = s.dni;
+    this.apellido2 = s.lastName;
+    this.nombre2 = s.firstName;
+    this.email2 = s.email;
+    //this.dni3 -> email3 3lineas abajo
 
+
+    this.modalService.open(ver).result.then(() => {
+      if(this.dni2.trim()!== "" && this.apellido2.trim() !== "" && this.nombre2.trim() !== "" && this.email2.trim() !== "" &&
+      (this.dni2.trim() !== this.dni3.trim() || this.apellido2.trim() !== this.apellido3.trim() || this.nombre2.trim() !== this.nombre3.trim() || this.email2.trim() !== this.email3.trim())) {
+
+        let student = new Student();
+        student.id = this.id2;
+        student.dni = this.dni2;
+        student.lastName = this.apellido2;
+        student.firstName = this.nombre2;
+        student.email = this.email2;
+        student.cohort = 0
+        student.status = 'activo'
+        student.gender = 'masculino'
+        student.address = 'mcn223'
+        student.phone = '444'
+
+        this.studentService.update(student).subscribe(() => { 
+          location.reload();
+        }, error => {
+          console.error(error);
+          alert("Hubo un error: " + error.error.message);
+        })
+      }
+
+
+    }, reason => {} ) // ???
+      
   }
 
 }

@@ -5,10 +5,10 @@
       Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
       sans-serif; "
 >
-  <h1>Titulo de TestComponent</h1>
+  <h1>first-component.component Title (Estudiantes)</h1>
 </div>
 
-<table>
+<table class="studentsTable">
   <thead>
     <tr>
       <th>ID</th>
@@ -21,32 +21,46 @@
 
   <tbody>
         <tr *ngFor="let student of studentsList">
-            <!--a ver si dentro del tr...-->
+            <!---->
             <td>{{ student.id }}</td>
             <td>{{ student.dni }}</td>
             <td>{{ student.lastName }}</td>
             <td>{{ student.firstName }}</td>
             <td>{{ student.email }}</td>
+            <td> <button class="btn-viewStudent" (click)="view(ver,student)">Ver info</button> </td>
+            <td> <button class="btn-deleteStudent" (click)="delete(student.id)">Borrar</button> </td>
         </tr>
+
   </tbody>
 </table>
 
-<form [formGroup]="studentForm">
-        <input readonly name="" id="" />
-        <input placeholder="Dni" formControlName="dni" />
-        <p *ngIf="dni?.touched && dni?.errors?.required">Campo obligatorio</p>
-        <input placeholder="Apellido" formControlName="lastName" />
-        <p *ngIf="lastName?.touched && lastName?.errors?.required">Campo obligatorio</p>
-        <input placeholder="Nombre" formControlName="firstName" />
-        <p *ngIf="firstName?.touched && firstName?.errors?.required">Campo obligatorio</p>
-        <input placeholder="Correo" formControlName="email" />
-        <p *ngIf="email?.touched && email?.errors?.required">Campo obligatorio</p>
-        <button (click)="saveStudent()">Guardar alumno</button>
-        <button>Boton1</button>
-</form>
+<div class="form-studentInfo">
+
+  <form [formGroup]="studentForm" class="studentForm-form"> 
+
+      <input class="student-input" formControlName="dni" placeholder="DNI" />
+      <p class="ng-textRequired" *ngIf="dni?.touched && dni?.errors?.required">Campo obligatorio</p>
+         
+      <input class="student-input" formControlName="lastName" placeholder="Apellido"/>
+      <p class="ng-textRequired" *ngIf="lastName?.touched && lastName?.errors?.required">Campo obligatorio</p>
+
+      <input class="student-input" formControlName="firstName" placeholder="Nombre"/>
+      <p class="ng-textRequired" *ngIf="firstName?.touched && firstName?.errors?.required" >Campo obligatorio</p>
+
+      <input class="student-input" formControlName="email" placeholder="Correo Electronico" />
+      <p class="ng-textRequired" *ngIf="email?.touched && email?.errors?.required">Campo obligatorio</p>
+
+      <button (click)="saveStudent()">Guardar alumno</button>
+      <button>Boton1</button>   
+  </form>
+
+</div>
 
 <ng-template #ver let-modal>
-  <div class="modal-header"></div>
+  <div class="modal-header">
+    <h5 class="modal-title">Informacion de estudiante</h5>
+        <button class="close" aria-label="Close" (click)="modal.dismiss()"><span aria-hidden="true">&times;</span></button>
+  </div>
 
   <div class="modal-body">
     <label>ID2</label>

@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Rubik:wght@300&display=swap');
+
+.studentsTable{
+    background-color: rgb(241, 241, 241);
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+}
+
+.studentForm-form{
+    font-weight: 900;
+    background-color: gainsboro;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 5px;  
+    
+
+}
+
+.studentForm-form .student-input{
+    display: block;
+    margin-bottom: 15px;
+
+}
+
+.studentForm-form .ng-textRequired{
+    color: goldenrod;
+    font-family: 'Rubik';
+    animation: fadeIn 1s;
+    font-weight: 220;
+    font-style: normal;
+    display: flex;
+    white-space: nowrap;
+}
+
+
+/*Frames para animar texto(s)*/
+/*fade-in*/
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
