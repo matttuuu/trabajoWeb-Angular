@@ -50,10 +50,11 @@
       <input class="student-input" formControlName="email" placeholder="Correo Electronico" />
       <p class="ng-textRequired" *ngIf="email?.touched && email?.errors?.required">Campo obligatorio</p>
 
-      <button (click)="saveStudent()">Guardar alumno</button>
-      <button>Boton1</button>   
+      <button (click)="saveStudent()"> Guardar alumno </button>
+       
   </form>
 
+  
 </div>
 
 <ng-template #ver let-modal>
