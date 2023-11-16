@@ -25,7 +25,7 @@
 }
 
 .studentForm-form .ng-textRequired{
-    color: goldenrod;
+    color: rgb(247, 177, 2);
     font-family: 'Rubik';
     animation: fadeIn 1s;
     font-weight: 220;

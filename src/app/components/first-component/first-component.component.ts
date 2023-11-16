@@ -16,7 +16,6 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 export class FirstComponentComponent implements OnInit  { //OnInit es una interfaz que te permite cargar cosas cuando el componente se carga
   student = new Student();
   studentForm:FormGroup;
-  
   studentsList = new Array <Student>
   
 
